@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "es6",
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@ASS/*": [
+        "src/assets/*"
+      ],
+      "@API/*": [
+        "src/backend/*"
+      ],
+      "@COM/*": [
+        "src/components/*"
+      ],
+      "@CON/*": [
+        "src/config/*"
+      ],
+      "@LAY/*": [
+        "src/layouts/*"
+      ],
+      "@PAG/*": [
+        "src/pages/*"
+      ],
+      "@MOD/*": [
+        "src/modules/*"
+      ],
+      "@STO/*": [
+        "src/stores/*"
+      ],
+      "@THE/*": [
+        "src/themes/*"
+      ],
+      "@STY/*": [
+        "src/styles/*"
+      ],
+      "@UTI/*": [
+        "src/utils/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,75 @@
+import { readdirSync } from 'fs';
+import { join } from 'path';
+import { exec } from 'child_process';
+import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+
+// Carregar variáveis de ambiente
+dotenv.config({ path: join(process.cwd(), '.env') });
+
+const dbConfig = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_BASE,
+};
+
+const migrationsDir = join(process.cwd(), 'src/backend/config/database/migrations');
+
+async function testDatabaseConnection() {
+    try {
+        const connection = await mysql.createConnection(dbConfig);
+        await connection.query('SELECT 1');
+        await connection.end();
+        console.log('Conexão com o banco de dados bem-sucedida.');
+    } catch (error) {
+        console.error('Erro ao conectar-se ao banco de dados:', error);
+        process.exit(1); // Sair do script em caso de erro de conexão
+    }
+}
+
+function runMigration(filePath) {
+    return new Promise((resolve, reject) => {
+        exec(`node ${filePath}`, (err, stdout, stderr) => {
+            if (err) {
+                reject(`Erro ao executar a migração ${filePath}: ${err}`);
+            } else {
+                resolve(`Resultado da migração ${filePath}: ${stdout}`);
+                if (stderr) {
+                    console.error(`Erro na migração ${filePath}: ${stderr}`);
+                }
+            }
+        });
+    });
+}
+
+async function runAllMigrations() {
+    try {
+        const files = readdirSync(migrationsDir);
+        files.sort();
+        for (const file of files) {
+            const filePath = join(migrationsDir, file);
+            try {
+                const result = await runMigration(filePath);
+                console.log(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    } catch (err) {
+        console.error('Erro ao ler o diretório de migrações:', err);
+    }
+}
+
+async function main() {
+    await testDatabaseConnection();
+    await runAllMigrations();
+}
+
+main()
+    .then(() => {
+        console.log('Todas as migrações foram executadas com sucesso.');
+    })
+    .catch((error) => {
+        console.error('Erro ao executar migrações:', error);
+    });
