@@ -8,13 +8,19 @@ let connection;
 
 export async function connectDB() {
     if (!connection) {
-        connection = await mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_NAME,
-        });
-        console.log('Connected to the MySQL database.');
+        try {
+            console.log('Connecting to the database...');
+            connection = await mysql.createConnection({
+                host: process.env.DB_HOST,
+                user: process.env.DB_USER,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+            });
+            console.log('Connected to the MySQL database.');
+        } catch (error) {
+            console.error('Failed to connect to the database:', error);
+            throw error;
+        }
     }
     return connection;
 }

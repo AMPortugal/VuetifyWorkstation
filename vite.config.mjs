@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => {
         },
         define: { 'process.env': env },
         optimizeDeps: {
-            include: ['axios', 'axios-cache-adapter'],
+            include: ['axios'],
             exclude: ['pinia', 'vuetify'],
             entries: ['./src/**/*.vue'],
         },

@@ -48,6 +48,7 @@ async function startServer() {
 }
 
 startServer()
+    // eslint-disable-next-line promise/always-return
     .then(() => {
         console.log('Server started successfully');
     })
