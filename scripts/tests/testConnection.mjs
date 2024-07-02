@@ -1,4 +1,4 @@
-import { connectDB } from './src/backend/config/database/conn.js';
+import { connectDB } from '../../src/backend/config/database/conn.js';
 
 async function testConnection() {
     try {
