@@ -1,24 +1,16 @@
 <template>
-    <div>
-        <button @click="logoutUser">Logout</button>
-    </div>
+    <v-btn @click="logout">Logout</v-btn>
 </template>
 
-<script>
+<script setup>
+import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/stores/authStore';
 
-export default {
-    name: 'LogoutButton',
-    setup() {
-        const authStore = useAuthStore();
+const router = useRouter();
+const authStore = useAuthStore();
 
-        const logoutUser = () => {
-            authStore.logout();
-        };
-
-        return {
-            logoutUser,
-        };
-    },
+const logout = () => {
+    authStore.logout();
+    router.push('/');
 };
 </script>

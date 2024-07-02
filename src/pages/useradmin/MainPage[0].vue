@@ -1,34 +1,24 @@
 <template>
     <div>
         <h1>Admin Page</h1>
-        <p>Bem-vindo à página de administração!</p>
+        <p>Bem vindo a página de administração</p>
+        <v-btn @click="logout">Logout</v-btn>
     </div>
 </template>
 
-<script>
-export default {
-    name: 'UserAdminPage',
-    beforeRouteEnter(to, from, next) {
-        const isAuthenticated = !!localStorage.getItem('token');
-        if (!isAuthenticated) {
-            next({ name: 'Login' });
-        } else {
-            next();
-        }
-    },
-    beforeRouteUpdate(to, from, next) {
-        const isAuthenticated = !!localStorage.getItem('token');
-        if (!isAuthenticated) {
-            next({ name: 'Login' });
-        } else {
-            next();
-        }
-    },
+<script setup>
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore';
+
+const router = useRouter();
+const authStore = useAuthStore();
+
+const logout = () => {
+    authStore.logout();
+    router.push('/homepage/0');
 };
 </script>
 
 <style scoped>
-h1 {
-    color: #2c3e50;
-}
+/* Seus estilos aqui */
 </style>
