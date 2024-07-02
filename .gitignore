@@ -63,3 +63,6 @@ web_modules/
 
 src/components/__tests__/*
 .env
+.idea
+
+dist/*

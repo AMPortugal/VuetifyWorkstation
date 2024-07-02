@@ -21,7 +21,9 @@
     "migrate:drop": "node scripts/migrations/migrateDrop.mjs",
     "test:connection": "node ./testConnection.mjs",
     "migrate:timestamp": "powershell -File scripts/migrations/runMigrate.ps1 -Action timestamp -Timestamp",
-    "format-sql": "sql-formatter -i src/backend/databases/**/*.sql"
+    "format-sql": "sql-formatter -i src/backend/databases/**/*.sql",
+    "babel": "npx babel src --out-dir distbabel",
+    "eslint": "npx eslint ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -52,6 +54,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/node": "^7.24.7",
     "@babel/preset-env": "^7.24.7",

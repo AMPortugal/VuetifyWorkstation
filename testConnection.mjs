@@ -9,5 +9,11 @@ async function testConnection() {
     }
 }
 
-testConnection();
-  
+// Chamando a função de teste de conexão e lidando com a promise
+testConnection()
+    .then(() => {
+        console.log('Teste de conexão concluído.');
+    })
+    .catch((error) => {
+        console.error('Erro ao executar o teste de conexão:', error);
+    });

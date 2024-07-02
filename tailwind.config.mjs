@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     prefix: 'tw-', // Prefixo para evitar conflitos de classes
     content: ['./index.html', './src/**/*.{html,js,jsx,ts,tsx,vue}'], // Arquivos para escanear classes Tailwind
     corePlugins: {

@@ -58,6 +58,23 @@
           ".tsx",
           ".vue"
         ]
+      },
+      "alias": {
+        "map": [
+          ["@", "./src"],
+          ["@ASS", "./src/assets"],
+          ["@API", "./src/backend"],
+          ["@COM", "./src/components"],
+          ["@CON", "./src/config"],
+          ["@LAY", "./src/layouts"],
+          ["@PAG", "./src/pages"],
+          ["@MOD", "./src/modules"],
+          ["@STO", "./src/stores"],
+          ["@THE", "./src/themes"],
+          ["@STY", "./src/styles"],
+          ["@UTI", "./src/utils"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".vue"]
       }
     }
   }
