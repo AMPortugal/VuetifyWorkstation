@@ -7,6 +7,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    GAppBar: typeof import('./../components/g-appBar/GAppBar.vue')['default']
+    GAppBarThemeSwitch: typeof import('./../components/g-appBar/GAppBarThemeSwitch.vue')['default']
+    GAppNav: typeof import('./../components/g-appBar/GAppNav.vue')['default']
+    GAppSearch: typeof import('./../components/g-appBar/GAppSearch.vue')['default']
     GMainVideo: typeof import('./../components/g-appMain/GMainVideo.vue')['default']
     LoadingProgress: typeof import('./../components/g-progressBar/LoadingProgress.vue')['default']
     LoginComponent: typeof import('./../components/g-usersComponent/LoginComponent.vue')['default']

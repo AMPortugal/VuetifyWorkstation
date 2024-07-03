@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Home Page</h1>
+        <GMainVideo />
         <!-- Seu conteúdo existente -->
         <v-btn color="primary" @click="isLoginModalOpen = true">Login</v-btn>
 
