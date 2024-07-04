@@ -1,10 +1,13 @@
 import connection from '../conn.js';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const users = [
-    { login: 'adriano', password: '#OpRBNox24', email: 'operacional@rbnoxmoveis.com.br', role: 'Diretor Operacional' },
-    { login: 'rodolpho', password: '#ComRBNox24', email: 'comercial@rbnoxmoveis.com.br', role: 'Diretor Comercial' },
-    { login: 'adm', password: '#AdmRBNox24', email: 'contato@rbnoxmoveis.com.br', role: 'Atendimento' },
+    { login: process.env.USER1_LOGIN, password: process.env.USER1_PASSWORD, email: process.env.USER1_EMAIL, role: process.env.USER1_ROLE },
+    { login: process.env.USER2_LOGIN, password: process.env.USER2_PASSWORD, email: process.env.USER2_EMAIL, role: process.env.USER2_ROLE },
+    { login: process.env.USER3_LOGIN, password: process.env.USER3_PASSWORD, email: process.env.USER3_EMAIL, role: process.env.USER3_ROLE },
 ];
 
 const insertUsers = async () => {
