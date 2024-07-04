@@ -22,5 +22,5 @@
 </template>
 <script setup>
 // Theme logic
-const { currentTheme } = toRefs(useAppStore())
+const { currentTheme } = toRefs(useAppStore());
 </script>

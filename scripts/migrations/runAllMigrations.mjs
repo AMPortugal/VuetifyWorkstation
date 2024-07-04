@@ -1,6 +1,6 @@
 import { readdirSync } from 'fs';
 import { join } from 'path';
-import { exec } from 'child_process';
+import { exec } from 'util';
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 
@@ -28,19 +28,16 @@ async function testDatabaseConnection() {
     }
 }
 
-function runMigration(filePath) {
-    return new Promise((resolve, reject) => {
-        exec(`node ${filePath}`, (err, stdout, stderr) => {
-            if (err) {
-                reject(`Erro ao executar a migração ${filePath}: ${err}`);
-            } else {
-                resolve(`Resultado da migração ${filePath}: ${stdout}`);
-                if (stderr) {
-                    console.error(`Erro na migração ${filePath}: ${stderr}`);
-                }
-            }
-        });
-    });
+async function runMigration(filePath) {
+    try {
+        const { stdout, stderr } = await exec(`node ${filePath}`);
+        if (stderr) {
+            console.error(`Erro na migração ${filePath}: ${stderr}`);
+        }
+        return `Resultado da migração ${filePath}: ${stdout}`;
+    } catch (err) {
+        throw new Error(`Erro ao executar a migração ${filePath}: ${err}`);
+    }
 }
 
 async function runAllMigrations() {
@@ -59,6 +56,7 @@ async function runAllMigrations() {
     } catch (err) {
         console.error('Erro ao ler o diretório de migrações:', err);
     }
+    return null; // Adicionado para garantir retorno de valor
 }
 
 async function main() {
@@ -69,7 +67,9 @@ async function main() {
 main()
     .then(() => {
         console.log('Todas as migrações foram executadas com sucesso.');
+        return null; // Adicionado para garantir retorno de valor
     })
     .catch((error) => {
         console.error('Erro ao executar migrações:', error);
+        throw error; // Lança uma exceção
     });

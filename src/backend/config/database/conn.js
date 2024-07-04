@@ -13,8 +13,8 @@ export async function connectDB() {
             connection = await mysql.createConnection({
                 host: process.env.DB_HOST,
                 user: process.env.DB_USER,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME,
+                password: process.env.DB_PASS,
+                database: process.env.DB_BASE,
             });
             console.log('Connected to the MySQL database.');
         } catch (error) {

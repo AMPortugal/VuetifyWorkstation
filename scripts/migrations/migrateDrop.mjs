@@ -10,7 +10,7 @@ const dbConfig = {
     database: process.env.DB_BASE,
 };
 
-const dropAllTables = async () => {
+const migrateDrop = async () => {
     const connection = await mysql.createConnection(dbConfig);
 
     try {
@@ -36,10 +36,12 @@ const dropAllTables = async () => {
     }
 };
 
-dropAllTables()
+migrateDrop()
     .then(() => {
-        console.log('Database drop operation completed.');
+        console.log('Migration drop completed successfully');
+        return null; // Retorna um valor
     })
     .catch((error) => {
-        console.error(`Error dropping database: ${error.message}`);
+        console.error('Error in migration drop:', error);
+        throw error; // Lança uma exceção
     });

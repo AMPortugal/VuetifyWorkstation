@@ -1,6 +1,6 @@
 <template>
     <VAppBar color="g-mclaren" elevation="10" height="45">
-        <template v-slot:title>
+        <template #title>
             <div class="d-flex align-center">
                 <div class="ml-3 d-flex">
                     <v-btn variant="tonal"> Início </v-btn>

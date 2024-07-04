@@ -1,0 +1,34 @@
+# Define end of line handling for different file types
+
+# Text files should have LF line endings in the repository but CRLF in the working directory on Windows
+* text=auto
+
+# Ensure that shell scripts and similar files have LF line endings
+*.sh eol=lf
+*.bash eol=lf
+*.zsh eol=lf
+*.mjs eol=lf
+*.js eol=lf
+*.jsx eol=lf
+*.vue eol=lf
+
+# Ensure that configuration files have LF line endings
+*.json eol=lf
+*.yaml eol=lf
+*.yml eol=lf
+*.toml eol=lf
+
+# Ensure that markdown and text files have LF line endings
+*.md eol=lf
+*.txt eol=lf
+
+# Binary files should be treated as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.mp4 binary

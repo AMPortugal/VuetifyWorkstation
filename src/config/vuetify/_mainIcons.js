@@ -7,7 +7,7 @@ const mdiIcons = {
     mdiHome,
     mdiHeart,
     mdiBookmark,
-    mdiShareVariant
+    mdiShareVariant,
 };
 
 const mdIcons = {

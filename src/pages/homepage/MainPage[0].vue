@@ -6,7 +6,7 @@
 
         <!-- Modal de Login -->
         <v-dialog v-model="isLoginModalOpen" max-width="400px">
-            <template v-slot:default="dialog">
+            <template #default="dialog">
                 <LoginComponent @close="dialog.value = false" />
             </template>
         </v-dialog>

@@ -8,8 +8,6 @@
                     density="comfortable"
                     color="g-orange-1"
                     label="Search"
-                    @keyup.enter="performSearch"
-                    @blur="toggleSearch"
                     class="mx-auto pa-1"
                     max-width="450"
                     clearable
@@ -17,6 +15,8 @@
                     variant="underlined"
                     hide-details
                     single-line
+                    @keyup.enter="performSearch"
+                    @blur="toggleSearch"
                 >
                 </v-text-field>
                 <v-btn
@@ -34,17 +34,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const showSearch = ref(false)
-const search = ref('')
+const showSearch = ref(false);
+const search = ref('');
 
 const toggleSearch = () => {
-    showSearch.value = !showSearch.value
-}
+    showSearch.value = !showSearch.value;
+};
 
 const performSearch = () => {
-    console.log('Performing search for:', search.value)
-    toggleSearch()
-}
+    console.log('Performing search for:', search.value);
+    toggleSearch();
+};
 </script>

@@ -1,16 +1,10 @@
 <template>
-    <v-app-bar
-        color="g-background"
-        :height="150"
-        :elevation="4"
-        style="padding-left: 30px"
-        :location="'top'"
-    >
-        <template v-slot:prepend>
+    <v-app-bar color="g-background" :height="150" :elevation="4" style="padding-left: 30px" :location="'top'">
+        <template #prepend>
             <v-img :aspect-ratio="1" src="@/assets/img/logo.png" width="100" height="100" cover />
         </template>
 
-        <template v-slot:title>
+        <template #title>
             <div class="d-flex align-center">
                 <div
                     class="text-g-orange-2 text-h3"
@@ -22,7 +16,7 @@
             </div>
         </template>
 
-        <template v-slot:append>
+        <template #append>
             <GAppBarThemeSwitch />
             <v-divider
                 :thickness="3"
@@ -38,13 +32,7 @@
                 variant="tonal"
                 icon="$mdiAccountOutline"
             ></v-btn>
-            <v-btn
-                class="mr-2"
-                density="comfortable"
-                color="g-orange-1"
-                variant="tonal"
-                icon="$mdiLogout"
-            ></v-btn>
+            <v-btn class="mr-2" density="comfortable" color="g-orange-1" variant="tonal" icon="$mdiLogout"></v-btn>
         </template>
     </v-app-bar>
 </template>

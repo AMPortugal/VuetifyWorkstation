@@ -48,12 +48,13 @@ async function startServer() {
 }
 
 startServer()
-    // eslint-disable-next-line promise/always-return
     .then(() => {
         console.log('Server started successfully');
+        return null; // Retorna um valor
     })
     .catch((error) => {
         console.error('Failed to start the server:', error);
+        throw error; // Lança uma exceção
     });
 
 async function findUserByLogin(login) {
